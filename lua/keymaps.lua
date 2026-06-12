@@ -37,10 +37,16 @@ register({
         ['<a-z>'] = {
             key = function()
                 vim.opt_local.wrap = not vim.opt_local.wrap:get()
-                local result = vim.opt_local.wrap:get() and 'enabled' or 'disabled'
-                vim.notify('vim.opt_local.wrap is ' .. result)
+                local status = vim.opt_local.wrap:get() and 'enabled' or 'disabled'
+                vim.notify('vim.opt_local.wrap is ' .. status)
+                local value = '100'
+                if vim.opt_local.wrap:get() then
+                    vim.opt_local.colorcolumn:remove(value)
+                else
+                    vim.opt_local.colorcolumn:append(value)
+                end
             end,
-        },
+        }
     },
     x = {
         p = { key = '"_xP' },
