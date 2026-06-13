@@ -15,7 +15,8 @@ opt.expandtab = true
 opt.signcolumn = 'yes:1'
 
 -- 开启垂直标尺并固定其位置
-opt.colorcolumn = { '100' }
+local consts = require('consts')
+opt.colorcolumn:append(consts.colorcolumn)
 
 -- 高亮当前光标行
 opt.cursorline = true
@@ -45,7 +46,7 @@ opt.undofile = true
 
 -- 开启快捷键等待并配置等待时间
 opt.timeout = true
-opt.timeoutlen = 250
+opt.timeoutlen = consts.timeout
 
 -- 添加 - 字符作为单词的一部分
 opt.iskeyword:append('-')
@@ -62,13 +63,12 @@ opt.lazyredraw = true
 
 -- 配置自动补全行为
 opt.completeopt = { 'menu', 'menuone' }
-opt.updatetime = 250
+opt.updatetime = consts.timeout
 
 -- 配置窗口和补全菜单样式
-local blend = 15
-opt.winblend = blend
-opt.winborder = 'rounded'
-opt.pumblend = blend
+opt.winblend = consts.winblend
+opt.winborder = consts.winborder
+opt.pumblend = consts.winblend
 opt.pumheight = 10
 
 -- 配置不可见字符的显示样式

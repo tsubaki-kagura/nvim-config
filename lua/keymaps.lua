@@ -39,17 +39,17 @@ register({
                 vim.opt_local.wrap = not vim.opt_local.wrap:get()
                 local status = vim.opt_local.wrap:get() and 'enabled' or 'disabled'
                 vim.notify('vim.opt_local.wrap is ' .. status)
-                local value = '100'
+                local consts = require('consts')
                 if vim.opt_local.wrap:get() then
-                    vim.opt_local.colorcolumn:remove(value)
+                    vim.opt_local.colorcolumn:remove(consts.colorcolumn)
                 else
-                    vim.opt_local.colorcolumn:append(value)
+                    vim.opt_local.colorcolumn:append(consts.colorcolumn)
                 end
             end,
         }
     },
     x = {
-        p = { key = '"_xP' },
+        p = { key = '"_xp' },
         ['<a-h>'] = { key = '<gv' },
         ['<a-j>'] = { key = ':m \'>+1<cr>gv' },
         ['<a-k>'] = { key = ':m \'<-2<cr>gv' },
