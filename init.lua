@@ -7,4 +7,4 @@ vim.g.consts = {
 require('options')
 require('keymaps')
 require('autocmds')
-require('plugins.catppuccin')
+require('plugins')

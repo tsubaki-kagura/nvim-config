@@ -35,6 +35,9 @@ opt.wrap = false
 -- 关闭模式显示
 opt.showmode = false
 
+-- 使用全局状态栏
+opt.laststatus = 3
+
 -- 配置屏幕滑动行为
 local scroll = 5
 opt.scrolloff = scroll

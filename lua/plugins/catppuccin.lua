@@ -1,10 +1,13 @@
-local gh = function(repo)
-    return 'git@github.com:' .. repo .. '.git'
+local generate = function(theme, colors)
+    for mode, color in pairs(theme) do
+        theme[mode] = {
+            a = { bg = color, fg = colors.mantle },
+            b = { bg = colors.surface0, fg = color },
+            c = { bg = colors.base, fg = colors.text },
+        }
+    end
+    return theme
 end
-
-vim.pack.add({
-    { src = gh('catppuccin/nvim'), name = 'catppuccin' },
-})
 
 require('catppuccin').setup({
     flavour = 'mocha',
@@ -16,14 +19,26 @@ require('catppuccin').setup({
     highlight_overrides = {
         mocha = function(colors)
             return {
-                StatusLine = { bg = colors.base },
                 CursorLine = { bg = colors.surface0 },
                 Visual = { style = {} },
             }
         end,
     },
     default_integrations = false,
+    integrations = {
+        lualine = {
+            mocha = function(colors)
+                return generate({
+                    normal = colors.lavender,
+                    insert = colors.sapphire,
+                    visual = colors.sky,
+                    command = colors.mauve,
+                    replace = colors.maroon,
+                }, colors)
+            end,
+        },
+    },
 })
 
--- 开启终端颜色支持并使用 catppuccin 主题
+-- 启用 catppuccin 主题
 vim.cmd.colorscheme('catppuccin-nvim')
