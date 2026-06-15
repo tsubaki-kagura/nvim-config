@@ -9,7 +9,6 @@ require('lualine').setup({
             {
                 'mode',
                 separator = { left = '' },
-                icon = { '', align = 'left' },
                 fmt = function(mode)
                     return mode:sub(1, 1) .. mode:sub(2):lower()
                 end,

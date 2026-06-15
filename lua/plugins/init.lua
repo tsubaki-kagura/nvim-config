@@ -4,6 +4,7 @@ end
 
 local plugins = {
     { src = gh('catppuccin/nvim'), name = 'catppuccin' },
+    { src = gh('nvim-mini/mini.icons'), name = 'mini-icons' },
     { src = gh('nvim-lualine/lualine.nvim'), name = 'lualine' },
 }
 

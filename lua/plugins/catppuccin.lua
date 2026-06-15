@@ -30,10 +30,10 @@ require('catppuccin').setup({
             mocha = function(colors)
                 return generate({
                     normal = colors.lavender,
-                    insert = colors.sapphire,
-                    visual = colors.sky,
+                    insert = colors.blue,
+                    visual = colors.sapphire,
                     command = colors.mauve,
-                    replace = colors.maroon,
+                    replace = colors.pink,
                 }, colors)
             end,
         },
