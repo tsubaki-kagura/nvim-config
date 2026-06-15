@@ -1,8 +1,21 @@
 local opt = vim.opt
+local consts = vim.g.consts
 
 -- 开启行号和相对行号
 opt.number = true
 opt.relativenumber = true
+
+-- 高亮当前光标行
+opt.cursorline = true
+
+-- 开启垂直标尺并固定其位置
+opt.colorcolumn:append(consts.column)
+
+-- 开启符号列并固定其宽度
+opt.signcolumn = 'yes:1'
+
+-- 开启终端真颜色支持
+opt.termguicolors = true
 
 -- 使用 4 格缩进
 local indent = 4
@@ -10,16 +23,6 @@ opt.tabstop = indent
 opt.softtabstop = indent
 opt.shiftwidth = indent
 opt.expandtab = true
-
--- 开启符号列并固定其宽度
-opt.signcolumn = 'yes:1'
-
--- 开启垂直标尺并固定其位置
-local consts = require('consts')
-opt.colorcolumn:append(consts.colorcolumn)
-
--- 高亮当前光标行
-opt.cursorline = true
 
 -- 配置搜索行为
 opt.hlsearch = true
@@ -29,8 +32,8 @@ opt.smartcase = true
 -- 关闭文本包裹
 opt.wrap = false
 
--- 使用全局状态栏
-opt.laststatus = 3
+-- 关闭模式显示
+opt.showmode = false
 
 -- 配置屏幕滑动行为
 local scroll = 5
@@ -44,8 +47,7 @@ opt.writebackup = false
 -- 开启回退文件
 opt.undofile = true
 
--- 开启快捷键等待并配置等待时间
-opt.timeout = true
+-- 配置快捷键等待时间
 opt.timeoutlen = consts.timeout
 
 -- 添加 - 字符作为单词的一部分
@@ -66,9 +68,9 @@ opt.completeopt = { 'menu', 'menuone' }
 opt.updatetime = consts.timeout
 
 -- 配置窗口和补全菜单样式
-opt.winblend = consts.winblend
-opt.winborder = consts.winborder
-opt.pumblend = consts.winblend
+opt.winblend = 20
+opt.winborder = 'rounded'
+opt.pumblend = opt.winblend:get()
 opt.pumheight = 10
 
 -- 配置不可见字符的显示样式

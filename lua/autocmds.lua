@@ -1,3 +1,5 @@
+local consts = vim.g.consts
+
 -- 联通系统剪贴板
 vim.api.nvim_create_autocmd('UIEnter', {
     callback = function()
@@ -6,7 +8,6 @@ vim.api.nvim_create_autocmd('UIEnter', {
 })
 
 -- 高亮复制文本
-local consts = require('consts')
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function()
         vim.hl.on_yank({ higroup = 'Visual', timeout = consts.timeout })
@@ -28,7 +29,6 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'markdown', 'text' },
     callback = function()
-        local consts = require('consts')
         vim.opt_local.colorcolumn:remove(consts.colorcolumn)
         vim.opt_local.wrap = true
     end,

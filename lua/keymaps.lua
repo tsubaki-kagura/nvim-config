@@ -33,23 +33,22 @@ register({
         ['<a-k>'] = { key = '<cmd>horizontal resize +1<cr>' },
         ['<a-l>'] = { key = '<cmd>vertical resize -1<cr>' },
         ['<leader>nh'] = { key = '<cmd>nohlsearch<cr>' },
-        ['<leader>re'] = { key = '<cmd>restart<cr>' },
         ['<a-z>'] = {
             key = function()
                 vim.opt_local.wrap = not vim.opt_local.wrap:get()
+                local column = vim.opt_local.colorcolumn
+                if vim.opt_local.wrap:get() then
+                    column:remove(vim.g.consts.column)
+                else
+                    column:append(vim.g.consts.column)
+                end
                 local status = vim.opt_local.wrap:get() and 'enabled' or 'disabled'
                 vim.notify('vim.opt_local.wrap is ' .. status)
-                local consts = require('consts')
-                if vim.opt_local.wrap:get() then
-                    vim.opt_local.colorcolumn:remove(consts.colorcolumn)
-                else
-                    vim.opt_local.colorcolumn:append(consts.colorcolumn)
-                end
             end,
         }
     },
     x = {
-        p = { key = '"_xp' },
+        p = { key = '"_xP' },
         ['<a-h>'] = { key = '<gv' },
         ['<a-j>'] = { key = ':m \'>+1<cr>gv' },
         ['<a-k>'] = { key = ':m \'<-2<cr>gv' },
