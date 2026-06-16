@@ -2,7 +2,7 @@ local generate = function(theme, colors)
     for mode, color in pairs(theme) do
         theme[mode] = {
             a = { bg = color, fg = colors.mantle },
-            b = { bg = colors.surface0, fg = color },
+            b = { bg = colors.surface0, fg = colors.text },
             c = { bg = colors.base, fg = colors.text },
         }
     end

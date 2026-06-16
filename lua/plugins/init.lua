@@ -9,6 +9,7 @@ local plugins = {
 }
 
 vim.pack.add(plugins)
+
 for _, plugin in pairs(plugins) do
     if not plugin.lib then
         require('plugins.' .. plugin.name)
